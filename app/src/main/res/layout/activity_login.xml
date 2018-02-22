@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="#696969"
+    tools:context="com.example.miranda.monitoringpdam.Login">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/blank_top">
+    </View>
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="700dp"
+        android:layout_height="700dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/bg" />
+
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/monitoringlogo"
+        android:id="@+id/logo"
+        />
+
+    <!--Textview digunakan untuk memberi tulisan yang hanya bisa dilihat tidak bisa diedit-->
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/logo"
+        android:id="@+id/blank_mid">
+    </View>
+
+    <!--menggunakan layout linear-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/logo"
+        android:orientation="vertical"
+        android:layout_height="120dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/linearLayout">
+        <!--EditText digunakan untuk text field-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/text_username"
+            android:hint="Username"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/text_password"
+            android:hint="Password"/>
+    </LinearLayout>
+
+    <!--Button digunakan untuk berpindah activity-->
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cek_remember"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:background="#00cccc"
+        android:onClick="button_onClick"
+        android:text="SIGN IN" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/btn_login"
+        android:id="@+id/blank_bottom">
+    </View>
+
+    <CheckBox
+        android:id="@+id/cek_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:text="Remember Me" />
+
+
+</RelativeLayout>

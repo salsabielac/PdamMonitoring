@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="#696969">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="10dp">
+            <TextView
+                android:id="@+id/eventid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:paddingTop="5dp"
+                android:text="Event Id" />
+
+            <TextView
+                android:id="@+id/textEventid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/eventid"
+                android:text="Source" />
+
+            <TextView
+                android:id="@+id/textSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textItemid"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/object"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/textSource"
+                android:text="Object" />
+
+            <TextView
+                android:id="@+id/textObject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textSource"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/objectid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/object"
+                android:text="Object Id" />
+
+            <TextView
+                android:id="@+id/textObjectid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textObject"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/objectid"
+                android:text="Clock" />
+
+            <TextView
+                android:id="@+id/textClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textObjectid"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/ns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/clock"
+                android:text="NS" />
+
+            <TextView
+                android:id="@+id/textNs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textClock"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/r_eventid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/ns"
+                android:text="R Event Id" />
+
+            <TextView
+                android:id="@+id/textREventid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textNs"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/r_clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/eventid"
+                android:text="R Clock" />
+
+            <TextView
+                android:id="@+id/textRClock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textEventid"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/r_ns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/r_clock"
+                android:text="R Ns" />
+
+            <TextView
+                android:id="@+id/textRNs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textRClock"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/correlationid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/r_ns"
+                android:text="Correlation Id" />
+
+            <TextView
+                android:id="@+id/textCorrelationid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textRNs"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/userid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_marginLeft="11dp"
+                android:layout_below="@+id/correlationid"
+                android:text="User Id" />
+
+            <TextView
+                android:id="@+id/textUserid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:layout_below="@+id/textCorrelationid"
+                android:text="TextView"
+                android:textColor="#ffffff" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

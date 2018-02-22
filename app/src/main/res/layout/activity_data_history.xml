@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:foreground="?attr/selectableItemBackground"
+    tools:context="com.example.miranda.monitoringpdam.DataHistory">
+
+    <ImageView
+        android:id="@+id/imagetime"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/severity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/calendar" />
+
+    <ImageView
+        android:id="@+id/imageseverity"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/recovery"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/pressure" />
+
+    <ImageView
+        android:id="@+id/imageacknowledge"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/actions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/statement" />
+
+    <ImageView
+        android:id="@+id/imagetags"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@+id/tags"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/hashtag" />
+
+    <ImageView
+        android:id="@+id/imagestatus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/info"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/clipdone" />
+
+    <ImageView
+        android:id="@+id/imageaction"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/tags"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/clipaction" />
+
+    <ImageView
+        android:id="@+id/imageinfo"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/host"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/information" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="120dp"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recovery"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/recovery"
+        android:layout_alignBottom="@+id/recovery"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/info"
+        android:layout_alignBottom="@+id/info"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/problem"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/problem"
+        android:layout_alignBottom="@+id/problem"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_below="@+id/actions"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ack"
+        android:layout_alignBottom="@+id/ack"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/duration"
+        android:layout_alignBottom="@+id/duration"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tags"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9"
+        android:paddingTop="5dp"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/imagetime"
+        android:layout_toRightOf="@+id/imagetime"
+        android:paddingTop="5dp"
+        android:text="Time" />
+
+    <TextView
+        android:id="@+id/severity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/time"
+        android:layout_alignStart="@+id/time"
+        android:layout_below="@+id/time"
+        android:paddingTop="5dp"
+        android:text="Severity" />
+
+    <ImageView
+        android:id="@+id/imagerecovery"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/status"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/clock" />
+
+    <ImageView
+        android:id="@+id/imageduration"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@+id/duration"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/stopwatch" />
+
+    <ImageView
+        android:id="@+id/imagehost"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/problem"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/database" />
+
+    <ImageView
+        android:id="@+id/imageproblem"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_above="@+id/duration"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/warning" />
+
+    <TextView
+        android:id="@+id/recovery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/severity"
+        android:layout_alignStart="@+id/severity"
+        android:layout_below="@+id/severity"
+        android:paddingTop="5dp"
+        android:text="Recovery Time" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recovery"
+        android:layout_alignStart="@+id/recovery"
+        android:layout_below="@+id/recovery"
+        android:paddingTop="5dp"
+        android:text="Status" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/status"
+        android:layout_alignStart="@+id/status"
+        android:layout_below="@+id/status"
+        android:paddingTop="5dp"
+        android:text="Info" />
+
+    <TextView
+        android:id="@+id/host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/info"
+        android:layout_alignStart="@+id/info"
+        android:layout_below="@+id/info"
+        android:paddingTop="5dp"
+        android:text="Host" />
+
+    <TextView
+        android:id="@+id/problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/host"
+        android:layout_alignStart="@+id/host"
+        android:layout_below="@+id/host"
+        android:paddingTop="5dp"
+        android:text="Problem" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/problem"
+        android:layout_alignStart="@+id/problem"
+        android:layout_below="@+id/problem"
+        android:layout_marginTop="28dp"
+        android:paddingTop="5dp"
+        android:text="Duration" />
+
+    <TextView
+        android:id="@+id/ack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/duration"
+        android:layout_alignStart="@+id/duration"
+        android:layout_below="@+id/duration"
+        android:paddingTop="5dp"
+        android:text="Ack" />
+
+    <TextView
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ack"
+        android:layout_alignStart="@+id/ack"
+        android:layout_below="@+id/ack"
+        android:paddingTop="5dp"
+        android:text="Actions" />
+
+    <TextView
+        android:id="@+id/tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/actions"
+        android:layout_alignStart="@+id/actions"
+        android:layout_below="@+id/actions"
+        android:paddingTop="5dp"
+        android:text="Tags" />
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/time"
+        android:layout_alignBottom="@+id/time"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recovery"
+        android:layout_alignLeft="@+id/textTime"
+        android:layout_alignStart="@+id/textTime"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textRecovery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/recovery"
+        android:layout_alignBottom="@+id/recovery"
+        android:layout_alignLeft="@+id/textSeverity"
+        android:layout_alignStart="@+id/textSeverity"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info"
+        android:layout_alignLeft="@+id/textRecovery"
+        android:layout_alignStart="@+id/textRecovery"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/info"
+        android:layout_alignBottom="@+id/info"
+        android:layout_alignLeft="@+id/textStatus"
+        android:layout_alignStart="@+id/textStatus"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/problem"
+        android:layout_alignLeft="@+id/textInfo"
+        android:layout_alignStart="@+id/textInfo"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textProblem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/problem"
+        android:layout_alignBottom="@+id/problem"
+        android:layout_alignLeft="@+id/textHost"
+        android:layout_alignStart="@+id/textHost"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ack"
+        android:layout_alignLeft="@+id/textProblem"
+        android:layout_alignStart="@+id/textProblem"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textAck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ack"
+        android:layout_alignBottom="@+id/ack"
+        android:layout_alignLeft="@+id/textDuration"
+        android:layout_alignStart="@+id/textDuration"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tags"
+        android:layout_alignLeft="@+id/textAck"
+        android:layout_alignStart="@+id/textAck"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tags"
+        android:layout_alignBottom="@+id/tags"
+        android:layout_alignLeft="@+id/textActions"
+        android:layout_alignStart="@+id/textActions"
+        android:text="TextView"
+        android:textColor="#ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</RelativeLayout>
