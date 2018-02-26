@@ -61,7 +61,7 @@ public class Event extends AppCompatActivity {
                 String clock = map.get("clock");
                 Toast.makeText(Event.this, ""+eventid, Toast.LENGTH_SHORT).show();
                 Intent myIntent;
-                myIntent = new Intent(Event.this, Item.class);
+                myIntent = new Intent(Event.this, Problem.class);
                 myIntent.putExtra("eventid", eventid);
                 myIntent.putExtra("souce", source);
                 myIntent.putExtra("object", object);
@@ -74,7 +74,7 @@ public class Event extends AppCompatActivity {
     private void loadData(){
         Event.MyAdapter adapter = new Event.MyAdapter(
                 this, listData,
-                R.layout.activity_event, new String[]{"eventid"},
+                R.layout.detail_event, new String[]{"eventid"},
                 new int[]{R.id.textEventId});
         listView.setAdapter(adapter);
     }
@@ -210,7 +210,7 @@ public class Event extends AppCompatActivity {
             View v = view;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.activity_event, null);
+                v = vi.inflate(R.layout.detail_event, null);
             }
 
             TextView textEventId, textSource, textObject, textClock;
