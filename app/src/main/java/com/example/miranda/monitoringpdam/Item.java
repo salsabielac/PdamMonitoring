@@ -57,21 +57,27 @@ public class Item extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                HashMap<String,String> map =(HashMap<String,String>)listView.getItemAtPosition(arg2);
-                String itemid = map.get("itemid");
-                String name = map.get("name");
-                String key_ = map.get("key_");
-                String lastvalue = map.get("lastvalue");
-                String status = map.get("status");
-                Toast.makeText(Item.this, ""+name, Toast.LENGTH_SHORT).show();
-                Intent myIntent;
-                myIntent = new Intent(Item.this, Event.class);
-                myIntent.putExtra("itemid", itemid);
-                myIntent.putExtra("name", name);
-                myIntent.putExtra("key_", key_);
-                myIntent.putExtra("lastvalue", lastvalue);
-                myIntent.putExtra("status", status);
-                startActivity(myIntent);
+                try{
+                    HashMap<String,String> map =(HashMap<String,String>)listView.getItemAtPosition(arg2);
+                    String itemid = map.get("itemid");
+                    String name = map.get("name");
+                    String key_ = map.get("key_");
+                    String lastvalue = map.get("lastvalue");
+                    String status = map.get("status");
+                    Toast.makeText(Item.this, ""+name, Toast.LENGTH_SHORT).show();
+                    Intent myIntent;
+                    myIntent = new Intent(Item.this, Event.class);
+                    myIntent.putExtra("itemid", itemid);
+                    myIntent.putExtra("name", name);
+                    myIntent.putExtra("key_", key_);
+                    myIntent.putExtra("lastvalue", lastvalue);
+                    myIntent.putExtra("status", status);
+                    startActivity(myIntent);
+
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+
             }
         });
     }
@@ -79,7 +85,7 @@ public class Item extends AppCompatActivity {
     private void loadData(){
         Item.MyAdapter adapter = new Item.MyAdapter(
                 this, listData,
-                R.layout.activity_history_item, new String[]{"itemid"},
+                R.layout.detail_item, new String[]{"itemid"},
                 new int[]{R.id.textItemId});
         listView.setAdapter(adapter);
     }
@@ -125,7 +131,7 @@ public class Item extends AppCompatActivity {
 
             //set parameters
             jsonRpc.addParam("output",  "extend");
-            jsonRpc.addParam("hostids",  "");
+//            jsonRpc.addParam("hostids",  "");
 
             jsonRpc.setAuth(auth_new);
             String jsonObject = "["+jsonRpc.connect()+"]";
@@ -215,7 +221,7 @@ public class Item extends AppCompatActivity {
             View v = view;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.activity_history_item, null);
+                v = vi.inflate(R.layout.detail_item, null);
             }
 
             TextView textItemId, textName, textKey_, textLastvalue, textStatus;
