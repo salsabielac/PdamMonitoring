@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MonitoringPdam</string>
+    <string name="title_activity_navdrawer">navdrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="tombol_event">View Event</string>
+    <string name="tombol_item">View Item</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

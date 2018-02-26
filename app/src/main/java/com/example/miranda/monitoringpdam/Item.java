@@ -1,31 +1,19 @@
 package com.example.miranda.monitoringpdam;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MonitoringPDAM extends AppCompatActivity {
+public class Item extends AppCompatActivity {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private String auth;
@@ -48,7 +36,8 @@ public class MonitoringPDAM extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monitoring_pdam);
+        setContentView(R.layout.activity_history_item);
+
         listView = (ListView) findViewById(R.id.listview);
         listData = new ArrayList<HashMap<String, String>>();
 
@@ -60,7 +49,7 @@ public class MonitoringPDAM extends AppCompatActivity {
 
 
         try {
-            getHost();
+            getItem();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,39 +58,31 @@ public class MonitoringPDAM extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 HashMap<String,String> map =(HashMap<String,String>)listView.getItemAtPosition(arg2);
-                String hostid = map.get("hostid");
-                String host = map.get("host");
+                String itemid = map.get("itemid");
                 String name = map.get("name");
-                Toast.makeText(MonitoringPDAM.this, ""+name, Toast.LENGTH_SHORT).show();
+                String key_ = map.get("key_");
+                String lastvalue = map.get("lastvalue");
+                String status = map.get("status");
+                Toast.makeText(Item.this, ""+name, Toast.LENGTH_SHORT).show();
                 Intent myIntent;
-                myIntent = new Intent(MonitoringPDAM.this, Item.class);
-                myIntent.putExtra("hostid", hostid);
-                myIntent.putExtra("host", host);
+                myIntent = new Intent(Item.this, Event.class);
+                myIntent.putExtra("itemid", itemid);
                 myIntent.putExtra("name", name);
+                myIntent.putExtra("key_", key_);
+                myIntent.putExtra("lastvalue", lastvalue);
+                myIntent.putExtra("status", status);
                 startActivity(myIntent);
             }
         });
     }
 
     private void loadData(){
-        MyAdapter adapter = new MyAdapter(
+        Item.MyAdapter adapter = new Item.MyAdapter(
                 this, listData,
-                R.layout.detail_host, new String[]{"hostid"},
-                new int[]{R.id.textHostId});
+                R.layout.activity_history_item, new String[]{"itemid"},
+                new int[]{R.id.textItemId});
         listView.setAdapter(adapter);
     }
-
-//    lv.setOnItemClickListener(new OnItemClickListener(){
-//        @Override
-//        public void onItemClick(AdapterView<?>SimpleAdapter,View myView, int position){
-//            ItemClicked item = SimpleAdapter.getItemAtPosition(position);
-//
-//            Intent intent = new Intent(Activity.this,Item.class);
-//            //based on item add info to intent
-//            startActivity(intent);
-//        }
-//    });
-
 
     String cekLogin() throws Exception {
         String auth = "";
@@ -135,46 +116,52 @@ public class MonitoringPDAM extends AppCompatActivity {
         return auth;
     }
 
-    void getHost() throws Exception {
-            String auth_new = cekLogin();
-            try {
-                JSONRPCClient jsonRpc = new JSONRPCClient();
+    void getItem() throws Exception {
+        String auth_new = cekLogin();
+        try {
+            JSONRPCClient jsonRpc = new JSONRPCClient();
 
-                jsonRpc.setMethod("host.get"); //set method name
+            jsonRpc.setMethod("item.get"); //set method name
 
-                //set parameters
-                jsonRpc.addParam("output",  "extend");
+            //set parameters
+            jsonRpc.addParam("output",  "extend");
+            jsonRpc.addParam("hostids",  "");
 
-                jsonRpc.setAuth(auth_new);
-                String jsonObject = "["+jsonRpc.connect()+"]";
-                if (jsonObject != null) {
+            jsonRpc.setAuth(auth_new);
+            String jsonObject = "["+jsonRpc.connect()+"]";
+            if (jsonObject != null) {
 
-                    JSONArray arrayDataFasilitas = new JSONArray(jsonObject);
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject list_spk = (JSONObject) arrayDataFasilitas.get(i);
-                        String result = list_spk.getString("result");
-                        JSONArray arrayHost = new JSONArray(result);
-                        initList(arrayHost);
-                    }
+                JSONArray arrayDataFasilitas = new JSONArray(jsonObject);
+                for (int i = 0; i < jsonObject.length(); i++) {
+                    JSONObject list_spk = (JSONObject) arrayDataFasilitas.get(i);
+                    String result = list_spk.getString("result");
+                    JSONArray arrayHost = new JSONArray(result);
+                    initList(arrayHost);
                 }
-            } catch (Exception e) {
-                throw e;
             }
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     private void initList(JSONArray localjsonString){
         try {
             for (int i = 0; i < localjsonString.length(); i++) {
                 JSONObject list_spk = (JSONObject) localjsonString.get(i);
-                String hostid = list_spk.getString("hostid");
-                String host = list_spk.getString("host");
+                String itemid = list_spk.getString("itemid");
                 String name = list_spk.getString("name");
+                String key_ = list_spk.getString("key_");
+                String lastvalue = list_spk.getString("lastvalue");
+                String status = list_spk.getString("status");
 
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put("hostid", hostid);
-                map.put("host", host);
+                map.put("itemid", itemid);
                 map.put("name", name);
-                Log.d("HASIL_LOOP", hostid);
+                map.put("key_", key_);
+                map.put("lastvalue", lastvalue);
+                map.put("status", status);
+
+                Log.d("HASIL_LOOP", itemid);
                 listData.add(map);
             }
 
@@ -184,46 +171,6 @@ public class MonitoringPDAM extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-
-//    @Override
-//    public boolean onItemLongClick(final AdapterView<?> adapter, View v, int pos,
-//                                   final long id) {
-////tampilkan alert dialog
-//        final Dialog dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.dialog_view);
-//        dialog.setTitle("Action");
-//        dialog.show();
-//        final Food b = (Food) getListAdapter().getItem(pos);
-//        eventButton = (Button) dialog.findViewById(R.id.button_event);
-//        itemButton = (Button) dialog.findViewById(R.id.button_event);
-////apabila tombol edit diklik
-//        eventButton.setOnClickListener(
-//                new View.OnClickListener()
-//                {
-//                    @Override
-//                    public void onClick(View v) {
-//// TODO Auto-generated method stub
-//                        switchToEvent(b.getId());
-//                        dialog.dismiss();
-//                    }
-//                }
-//        );
-////apabila tombol delete di klik
-//        itemButton.setOnClickListener(
-//                new View.OnClickListener()
-//                {
-//                    @Override
-//                    public void onClick(View v) {
-//// Delete food
-//                        dataSource.deleteFood(b.getId());
-//                        dialog.dismiss();
-//                        finish();
-//                        startActivity(getIntent());
-//                    }
-//                }
-//        );
-//        return true;
-//    }
 
 
     private boolean logout() {
@@ -268,24 +215,30 @@ public class MonitoringPDAM extends AppCompatActivity {
             View v = view;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.detail_host, null);
+                v = vi.inflate(R.layout.activity_history_item, null);
             }
 
-            TextView textHostId, textHost, textName;
-            textHostId = (TextView) v.findViewById(R.id.textHostId);
-            textHost = (TextView) v.findViewById(R.id.textHost);
+            TextView textItemId, textName, textKey_, textLastvalue, textStatus;
+            textItemId = (TextView) v.findViewById(R.id.textItemId);
             textName = (TextView) v.findViewById(R.id.textName);
+            textKey_ = (TextView) v.findViewById(R.id.textKey_);
+            textLastvalue = (TextView) v.findViewById(R.id.textLastvalue);
+            textStatus = (TextView) v.findViewById(R.id.textStatus);
 
-            final String hostId = results.get(position).get("hostid");
-            final String host = results.get(position).get("host");
+            final String itemId = results.get(position).get("itemid");
             final String name = results.get(position).get("name");
+            final String key_ = results.get(position).get("key_");
+            final String lastvalue = results.get(position).get("lastvalue");
+            final String status = results.get(position).get("status");
 
-            textHostId.setText(hostId);
-            textHost.setText(host);
+            textItemId.setText(itemId);
             textName.setText(name);
+            textKey_.setText(key_);
+            textLastvalue.setText(lastvalue);
+            textStatus.setText(status);
 
             return v;
         }
     }
-
 }
+

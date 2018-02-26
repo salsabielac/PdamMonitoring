@@ -22,7 +22,13 @@
         </activity>
         <activity android:name=".MonitoringPDAM" />
         <activity android:name=".History" />
-        <activity android:name=".Problem"></activity>
+        <activity android:name=".Problem" />
+        <activity android:name=".Item" />
+        <activity android:name=".Event" />
+        <activity
+            android:name=".Navdrawer"
+            android:label="@string/title_activity_navdrawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
