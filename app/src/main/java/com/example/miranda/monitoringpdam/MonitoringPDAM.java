@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,6 +29,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.miranda.monitoringpdam.util.ConstructNavigationViewUtil;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -36,7 +41,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MonitoringPDAM extends AppCompatActivity {
+public class MonitoringPDAM extends AppCompatActivity implements ConstructNavigationViewUtil.NavigationViewListener{
+
+    private static String TAG = MonitoringPDAM.class.getSimpleName();
+
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private NavigationView navView;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private String auth;
@@ -49,21 +60,36 @@ public class MonitoringPDAM extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring_pdam);
+
+        if (getSupportActionBar() != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        navView = (NavigationView)findViewById(R.id.nav_view);
         listView = (ListView) findViewById(R.id.listview);
         listData = new ArrayList<HashMap<String, String>>();
 
         this.pref = getApplicationContext().getSharedPreferences("SessionID", 0); // 0 - for private mode
         this.editor = pref.edit();
 
-
         auth = this.pref.getString("name","");
-
 
         try {
             getHost();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        ConstructNavigationViewUtil navigationView = new ConstructNavigationViewUtil(navView);
+        navigationView.setNavigationViewListener(this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -253,6 +279,27 @@ public class MonitoringPDAM extends AppCompatActivity {
             System.out.println(e);
         }
         return auth;
+    }
+
+    @Override
+    public void onNavigationViewMenuClicked(MenuItem item) {
+        drawerLayout.closeDrawers();
+
+        switch (item.getItemId()) {
+            case R.id.nav_host:
+                drawerLayout.closeDrawers();
+                break;
+
+            case R.id.nav_problem:
+                startActivity(new Intent(this, Problem.class));
+                break;
+            case R.id.nav_about:
+                //startActivity(new Intent(this, MessagesActivity.class));
+                break;
+            case R.id.logout:
+                //startActivity(new Intent(this, MessagesActivity.class));
+                break;
+        }
     }
 
     public class MyAdapter extends SimpleAdapter {

@@ -12,7 +12,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,15 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MonitoringPDAM" />
-        <activity android:name=".History" />
+        <activity android:name=".MonitoringPDAM" android:label="@string/app_name" />
+        <activity android:name=".History"  android:theme="@style/AppTheme"/>
         <activity android:name=".Problem" />
         <activity android:name=".Item" />
         <activity android:name=".Event" />
-        <activity
-            android:name=".Navdrawer"
-            android:label="@string/title_activity_navdrawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

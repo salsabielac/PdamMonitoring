@@ -7,5 +7,9 @@
     <string name="tombol_event">View Event</string>
     <string name="tombol_item">View Item</string>
 
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+
     <string name="action_settings">Settings</string>
 </resources>

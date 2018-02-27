@@ -40,6 +40,11 @@ public class Problem extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         listData = new ArrayList<HashMap<String, String>>();
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
         this.pref = getApplicationContext().getSharedPreferences("SessionID", 0); // 0 - for private mode
         this.editor = pref.edit();
 

@@ -3,8 +3,6 @@ package com.example.miranda.monitoringpdam.util;
 import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 
-import com.example.miranda.monitoringpdam.Navdrawer;
-
 import butterknife.ButterKnife;
 
 public class ConstructNavigationViewUtil {
@@ -15,20 +13,11 @@ public class ConstructNavigationViewUtil {
 
         view.setNavigationItemSelectedListener(item -> {
             navigationViewListener.onNavigationViewMenuClicked(item);
-
             return false;
         });
     }
 
-//    public void setNavigationViewListener(NavigationViewListener navigationViewListener) {
-//        this.navigationViewListener = navigationViewListener;
-//    }
-
-//    public void setNavigationViewListener(NavigationViewListener navigationViewListener) {
-//        this.navigationViewListener = navigationViewListener;
-//    }
-
-    public void setNavigationViewListener(Navdrawer navdrawer) {
+    public void setNavigationViewListener(NavigationViewListener navigationViewListener) {
         this.navigationViewListener = navigationViewListener;
     }
 
